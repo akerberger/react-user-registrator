@@ -11,8 +11,9 @@ function App() {
   const [users, setUsers] = useState([])
 
   const newUserHandler = (props) => {
-    console.log("Received new user! Username: "+props.username+" Age: "+props.age)
-    setUsers((prev) => [...prev, {username:props.username, age: props.age}])
+    const newUser = {username: props.username, age: props.age}
+
+    setUsers((prev) => [...prev, newUser])
   }
 
   return (
