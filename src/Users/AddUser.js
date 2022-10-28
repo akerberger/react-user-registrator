@@ -1,7 +1,8 @@
-import { ConsoleWriter } from 'istanbul-lib-report';
+
 import {useState} from 'react'
 import Card from '../UI/Card';
 import classes from './AddUser.module.css';
+import Button from '../UI/Button'
 
 
 const AddUser = (props) => {
@@ -9,8 +10,9 @@ const AddUser = (props) => {
     const [username, setUsername] = useState('');
     const [age, setAge] = useState('');
 
-    const addUserHandler = (event) => {
+    const addUserSubmitHandler = (event) => {
         event.preventDefault();
+
         props.newUserHandler({username: username, age: age})
         setUsername('')
         setAge('')
@@ -26,14 +28,15 @@ const AddUser = (props) => {
 
     return (
         <Card className={classes.input}>
-            <form onSubmit={addUserHandler}>
+            <form onSubmit={addUserSubmitHandler}>
                 <label htmlFor ="username">Username</label>
                 <input id="username" type="text" value={username} onChange={onUsernameChange} />
 
                 <label htmlFor="age">Age</label>
                 <input id="age" type = "number" value = {age} onChange = {onAgeChange} />
                 
-                <button type="submit">Submit!</button>
+                
+                <Button type="submit">Submit!</Button>
             </form>
         </Card>
     )
