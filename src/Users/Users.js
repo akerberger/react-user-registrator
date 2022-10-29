@@ -1,24 +1,16 @@
-
+import Card from "../UI/Card";
+import classes from "./Users.module.css";
 
 const Users = (props) => {
-    return (
-        <div>
-            {props.users.map((user, i) => {
-                console.log("i = "+i)
-                return (<div key = {i}>
-                    Username: {user.username}
-                    Age: {user.age}
-                </div>)
-            }
-                
-            )}
-
-
-
-
-            
-        </div>
-    )
-}
+  return props.users.length > 0 ? (
+    <Card className={classes.users}>
+      <ul>
+        {props.users.map((user) => {
+          return <li>{user.username + " (" + user.age + " years)"}</li>;
+        })}
+      </ul>
+    </Card>
+  ) : null;
+};
 
 export default Users;
